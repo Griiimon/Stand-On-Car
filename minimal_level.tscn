@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bswuvjxq4q42h"]
+
+[ext_resource type="Script" uid="uid://bij1neatecsss" path="res://level.gd" id="1_osg1n"]
+[ext_resource type="Texture2D" uid="uid://dm7f0munnoa2j" path="res://texture_04.png" id="2_ldha4"]
+[ext_resource type="PackedScene" uid="uid://b1nauekhyyjy5" path="res://car.tscn" id="3_cpbeo"]
+[ext_resource type="Environment" uid="uid://c3wpppquo1atk" path="res://new_environment.tres" id="4_wtkxk"]
+[ext_resource type="PackedScene" uid="uid://dx4n4s64qvrun" path="res://player.tscn" id="5_p8hpm"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5xgho"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ainy"]
+albedo_texture = ExtResource("2_ldha4")
+uv1_scale = Vector3(100, 100, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n6hdu"]
+material = SubResource("StandardMaterial3D_1ainy")
+size = Vector2(1000, 1000)
+
+[node name="Level" type="Node3D" unique_id=448124711 node_paths=PackedStringArray("player", "car")]
+script = ExtResource("1_osg1n")
+player = NodePath("SubViewport/Player")
+car = NodePath("Car")
+player_acceleration_factor = 0.5
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1952796701]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1153403000]
+shape = SubResource("WorldBoundaryShape3D_5xgho")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1683303444]
+mesh = SubResource("PlaneMesh_n6hdu")
+
+[node name="Car" parent="." unique_id=1680679176 node_paths=PackedStringArray("player") instance=ExtResource("3_cpbeo")]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1, -0.021580245, 0.85173196, -2.0757728)
+angular_damp = 2.0
+player = NodePath("../SubViewport/Player")
+
+[node name="Camera3D" type="Camera3D" parent="Car" unique_id=785271634]
+transform = Transform3D(1.0000243, 0, 0, 0, 0.9612745, 0.27565658, 0, -0.27564102, 0.96132874, 0.7345991, 4.969686, 11.657457)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=48763283]
+environment = ExtResource("4_wtkxk")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1543835926]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(128, 128)
+render_target_update_mode = 4
+
+[node name="Player" parent="SubViewport" unique_id=1111289112 instance=ExtResource("5_p8hpm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=568599620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3677002, 2.907236)
+
+[node name="Floor" type="StaticBody3D" parent="SubViewport" unique_id=185854031]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/Floor" unique_id=696369195]
+shape = SubResource("WorldBoundaryShape3D_5xgho")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport" unique_id=1738858640]
+environment = ExtResource("4_wtkxk")

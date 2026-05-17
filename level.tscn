@@ -29,10 +29,11 @@ top_radius = 0.1
 bottom_radius = 0.1
 height = 1.0
 
-[node name="Level" type="Node3D" unique_id=448124711 node_paths=PackedStringArray("player", "car")]
+[node name="Level" type="Node3D" unique_id=448124711 node_paths=PackedStringArray("player", "car", "path_follow")]
 script = ExtResource("1_u52ul")
 player = NodePath("CanvasLayer/SubViewportContainer/SubViewport/Player")
 car = NodePath("Car")
+path_follow = NodePath("Path3D/PathFollow3D")
 player_acceleration_factor = 0.5
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1952796701]
