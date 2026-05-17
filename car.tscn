@@ -22,7 +22,10 @@ top_radius = 0.8
 bottom_radius = 0.8
 height = 0.5
 
-[node name="Car" type="CharacterBody3D" unique_id=1680679176]
+[node name="Car" type="RigidBody3D" unique_id=154354497]
+gravity_scale = 0.0
+linear_damp = 1.0
+angular_damp = 1.0
 script = ExtResource("1_7822p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=294537577]
@@ -49,3 +52,6 @@ mesh = SubResource("CylinderMesh_0b4ue")
 
 [node name="PlayerOffset" type="Marker3D" parent="." unique_id=1735015566]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="PullOffset" type="Marker3D" parent="." unique_id=1958944826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.9332786)

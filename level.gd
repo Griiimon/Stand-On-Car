@@ -11,5 +11,5 @@ extends Node3D
 
 func _physics_process(delta: float) -> void:
 	player.push(-car.acceleration * player_acceleration_factor)
-
 	path_follow.progress += car_speed * delta
+	car.pull_towards(path_follow.global_position)
