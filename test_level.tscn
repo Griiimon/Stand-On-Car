@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://i4xyl3ob41e6"]
+
+[ext_resource type="Script" uid="uid://bij1neatecsss" path="res://level.gd" id="1_4ptq8"]
+[ext_resource type="Script" uid="uid://dasla72x23yms" path="res://car.gd" id="2_sb12i"]
+[ext_resource type="Environment" uid="uid://c3wpppquo1atk" path="res://new_environment.tres" id="3_gbhdq"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5xgho"]
+
+[sub_resource type="Curve3D" id="Curve3D_u52ul"]
+closed = true
+_data = {
+"points": PackedVector3Array(-0.49833453, -1.090913, 2.6885593, 0.49833453, 1.090913, -2.6885593, -0.17757177, 0, -0.08355634, -0.6365938, -9.536743e-06, 5.3701134, 0.6365938, 9.536743e-06, -5.3701134, 0.32288647, -0.48072243, -23.46811, -6.492044, 0, 3.732254, 6.492044, 0, -3.732254, 7.546931, 0, -39.61986, -3.6737728, 0, -1.9896393, 3.6737728, 0, 1.9896393, 24.487322, 0, -31.996681, -4.423355, 0, -2.930767, 4.423355, 0, 2.930767, 55.827076, 0, -31.319065, 1.6103516, 0, -5.568369, -1.6103516, 0, 5.568369, 63.95847, 0, -7.941307, 6.234043, 0, -5.7497597, -6.234043, 0, 5.7497597, 57.351704, 0, 40.847054, 5.6847744, 0, 4.222496, -5.6847744, 0, -4.222496, 22.62388, 0, 48.300835, 8.076841, 0, -0.63539124, -8.076841, 0, 0.63539124, 7.37752, 0, 31.699238, 11.933073, 0, 3.1219559, -11.933073, 0, -3.1219559, -24.639841, 0, 48.470238, -16.23367, 0, -6.3604774, 16.23367, 0, 6.3604774, -32.771233, 0, 22.382015),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vonw3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_oi3di"]
+size = Vector3(3, 1, 5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0b4ue"]
+top_radius = 0.8
+bottom_radius = 0.8
+height = 0.5
+
+[node name="Level" type="Node3D" unique_id=448124711]
+script = ExtResource("1_4ptq8")
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1952796701]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1153403000]
+shape = SubResource("WorldBoundaryShape3D_5xgho")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1033350439]
+curve = SubResource("Curve3D_u52ul")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1697199295]
+transform = Transform3D(0.99870855, -0.035140287, -0.036059175, 0.032704443, 0.9972705, -0.06603191, 0.03828343, 0.064772844, 0.997093, -0.02264623, 0.3236998, -2.043037)
+progress = 2.0
+
+[node name="Car" type="CharacterBody3D" parent="Path3D/PathFollow3D" unique_id=2117754582]
+transform = Transform3D(0.9999866, 0, -0.0051811207, 0, 1, 0, 0.0051811207, 0, 0.9999866, 0.17713648, 1.1123877, 0.08447524)
+script = ExtResource("2_sb12i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D/Car" unique_id=401747281]
+shape = SubResource("BoxShape3D_vonw3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D/Car" unique_id=580301648]
+mesh = SubResource("BoxMesh_oi3di")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D/Car/MeshInstance3D" unique_id=167934625]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -1.9095712, 0, -2.2197404)
+mesh = SubResource("CylinderMesh_0b4ue")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Path3D/PathFollow3D/Car/MeshInstance3D" unique_id=848227975]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 1.91, 0, -2.22)
+mesh = SubResource("CylinderMesh_0b4ue")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Path3D/PathFollow3D/Car/MeshInstance3D" unique_id=261546178]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -1.9095712, 0, 2.2725883)
+mesh = SubResource("CylinderMesh_0b4ue")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Path3D/PathFollow3D/Car/MeshInstance3D" unique_id=17818821]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 1.91, 0, 2.2723286)
+mesh = SubResource("CylinderMesh_0b4ue")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=785271634]
+transform = Transform3D(1, 0, 0, 0, 0.97269493, 0.23208745, 0, -0.23208745, 0.97269493, 0.31044674, 5.177374, 9.495708)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=48763283]
+environment = ExtResource("3_gbhdq")

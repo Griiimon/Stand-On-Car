@@ -8,6 +8,7 @@
 [node name="PlayerTest" type="Node3D" unique_id=1526554972]
 
 [node name="Player" parent="." unique_id=1111289112 instance=ExtResource("1_xys6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30692005, 0)
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1059626141]
 

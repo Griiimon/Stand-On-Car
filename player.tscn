@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dx4n4s64qvrun"]
 
 [ext_resource type="Script" uid="uid://lrav4u1d83jr" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://4axm8urk4pr" path="res://player_base_model.tscn" id="2_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://mfymgtqfu5s3" path="res://player_body_model.tscn" id="3_hqtel"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_onrkg"]
 friction = 0.5
@@ -8,38 +10,21 @@ friction = 0.5
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3pqv"]
 size = Vector3(1, 0.5, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_hqtel"]
-size = Vector3(1, 0.5, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_sweqy"]
 size = Vector3(0.5, 2, 0.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2hs0m"]
-size = Vector3(0.5, 2, 0.5)
-
-[sub_resource type="SphereMesh" id="SphereMesh_1jxqw"]
-radius = 0.4
-height = 0.8
-
-[sub_resource type="BoxMesh" id="BoxMesh_dw050"]
-size = Vector3(1.5, 0.5, 0.4)
-
-[sub_resource type="SphereMesh" id="SphereMesh_b26j0"]
-radius = 0.1
-height = 0.2
 
 [node name="Player" type="Node3D" unique_id=1111289112]
 script = ExtResource("1_4flbx")
 
 [node name="Base" type="RigidBody3D" parent="." unique_id=1460643946]
+axis_lock_angular_y = true
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_onrkg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Base" unique_id=438066627]
 shape = SubResource("BoxShape3D_i3pqv")
 
-[node name="BaseModel" type="MeshInstance3D" parent="Base" unique_id=49561880]
-mesh = SubResource("BoxMesh_hqtel")
+[node name="BaseModel" parent="Base" unique_id=328632642 instance=ExtResource("2_i3pqv")]
 
 [node name="Body" type="RigidBody3D" parent="." unique_id=743081027]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.886006, 0)
@@ -47,20 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.886006, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body" unique_id=2054231985]
 shape = SubResource("BoxShape3D_sweqy")
 
-[node name="BodyModel" type="MeshInstance3D" parent="Body" unique_id=325162879]
-mesh = SubResource("BoxMesh_2hs0m")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Body/BodyModel" unique_id=204188424]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2896231, 0)
-mesh = SubResource("SphereMesh_1jxqw")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Body/BodyModel" unique_id=1860361608]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5143496, 0)
-mesh = SubResource("BoxMesh_dw050")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Body/BodyModel" unique_id=562692948]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2583004, -0.37457502)
-mesh = SubResource("SphereMesh_b26j0")
+[node name="BodyModel" parent="Body" unique_id=1326167551 instance=ExtResource("3_hqtel")]
 
 [node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="." unique_id=1019766122]
 node_a = NodePath("../Base")
