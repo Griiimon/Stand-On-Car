@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://4uamftydlkm"]
+
+[ext_resource type="PackedScene" uid="uid://dx4n4s64qvrun" path="res://player.tscn" id="1_xys6k"]
+[ext_resource type="Environment" uid="uid://c3wpppquo1atk" path="res://new_environment.tres" id="2_e0b2u"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_e0b2u"]
+
+[node name="PlayerTest" type="Node3D" unique_id=1526554972]
+
+[node name="Player" parent="." unique_id=1111289112 instance=ExtResource("1_xys6k")]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1059626141]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1107383043]
+shape = SubResource("WorldBoundaryShape3D_e0b2u")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=448234506]
+transform = Transform3D(1, 0, 0, 0, 0.98020214, 0.1979995, 0, -0.1979995, 0.98020214, 0, 2.036459, 4.401786)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1303924758]
+environment = ExtResource("2_e0b2u")
