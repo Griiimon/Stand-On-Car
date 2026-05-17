@@ -4,10 +4,20 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vonw3"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7822p"]
+albedo_color = Color(0.16077456, 0.2827044, 0.5743043, 1)
+metallic = 0.59
+roughness = 0.49
+
 [sub_resource type="BoxMesh" id="BoxMesh_oi3di"]
+material = SubResource("StandardMaterial3D_7822p")
 size = Vector3(3, 1, 5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uoj53"]
+albedo_color = Color(0.080783345, 0.080783345, 0.080783345, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_0b4ue"]
+material = SubResource("StandardMaterial3D_uoj53")
 top_radius = 0.8
 bottom_radius = 0.8
 height = 0.5

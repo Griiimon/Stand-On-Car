@@ -2,10 +2,19 @@
 
 [ext_resource type="Script" uid="uid://bij1neatecsss" path="res://level.gd" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://b1nauekhyyjy5" path="res://car.tscn" id="2_0b4ue"]
+[ext_resource type="Texture2D" uid="uid://dm7f0munnoa2j" path="res://texture_04.png" id="2_f2txt"]
 [ext_resource type="Environment" uid="uid://c3wpppquo1atk" path="res://new_environment.tres" id="2_vonw3"]
 [ext_resource type="PackedScene" uid="uid://dx4n4s64qvrun" path="res://player.tscn" id="3_0b4ue"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_5xgho"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ainy"]
+albedo_texture = ExtResource("2_f2txt")
+uv1_scale = Vector3(100, 100, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n6hdu"]
+material = SubResource("StandardMaterial3D_1ainy")
+size = Vector2(1000, 1000)
 
 [sub_resource type="Curve3D" id="Curve3D_u52ul"]
 closed = true
@@ -25,7 +34,11 @@ car = NodePath("Car")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1153403000]
 shape = SubResource("WorldBoundaryShape3D_5xgho")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1683303444]
+mesh = SubResource("PlaneMesh_n6hdu")
+
 [node name="Path3D" type="Path3D" parent="." unique_id=1033350439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8517325, 0)
 curve = SubResource("Curve3D_u52ul")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1697199295]
@@ -37,7 +50,7 @@ tilt_enabled = false
 remote_path = NodePath("../../../Car")
 
 [node name="Car" parent="." unique_id=1680679176 node_paths=PackedStringArray("player") instance=ExtResource("2_0b4ue")]
-transform = Transform3D(0.99937093, 4.2146482e-08, -0.035460986, -2.9001583e-08, 1, 3.7120043e-07, 0.035460982, -3.6993856e-07, 0.99937105, -0.021580245, -5.491978e-07, -2.0757728)
+transform = Transform3D(0.99937093, 4.2146482e-08, -0.035460986, -2.9001583e-08, 1, 3.7120043e-07, 0.035460982, -3.6993856e-07, 0.99937105, -0.021580245, 0.85173196, -2.0757728)
 player = NodePath("../CanvasLayer/SubViewportContainer/SubViewport/Player")
 
 [node name="Camera3D" type="Camera3D" parent="Car" unique_id=785271634]

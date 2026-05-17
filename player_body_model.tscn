@@ -1,16 +1,32 @@
 [gd_scene format=3 uid="uid://mfymgtqfu5s3"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xgrmo"]
+albedo_color = Color(0, 0.68235296, 0.5019608, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_2hs0m"]
+material = SubResource("StandardMaterial3D_xgrmo")
 size = Vector3(0.5, 2, 0.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gnjly"]
+albedo_color = Color(0.5786302, 0.4046203, 0.42586175, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_1jxqw"]
+material = SubResource("StandardMaterial3D_gnjly")
 radius = 0.4
 height = 0.8
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ip7xp"]
+albedo_color = Color(0, 0.68235296, 0.5019608, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_dw050"]
+material = SubResource("StandardMaterial3D_ip7xp")
 size = Vector3(1.5, 0.5, 0.4)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nakrn"]
+albedo_color = Color(0.5786302, 0.4046203, 0.42586175, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_b26j0"]
+material = SubResource("StandardMaterial3D_nakrn")
 radius = 0.1
 height = 0.2
 
