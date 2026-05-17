@@ -30,8 +30,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var current_velocity := (global_position - last_position) / delta
-	var local_velocity := current_velocity.rotated(Vector3.UP, global_rotation.y)
+	var local_velocity := global_transform.affine_inverse() * linear_velocity
 	acceleration = (local_velocity - last_velocity) / delta
 	
 	last_position = global_position
