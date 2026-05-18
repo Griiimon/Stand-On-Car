@@ -45,10 +45,10 @@ angular_limit_x/lower_angle = -0.34906584
 angular_limit_z/upper_angle = 0.34906584
 angular_limit_z/lower_angle = -0.34906584
 angular_spring_x/enabled = true
-angular_spring_x/stiffness = 10.0
+angular_spring_x/stiffness = 100.0
 angular_spring_x/damping = 10.0
 angular_spring_z/enabled = true
-angular_spring_z/stiffness = 10.0
+angular_spring_z/stiffness = 100.0
 angular_spring_z/damping = 10.0
 
 [connection signal="body_entered" from="Base" to="." method="_on_base_body_entered"]
