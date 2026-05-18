@@ -48,8 +48,18 @@ func push(force: Vector3):
 
 
 func transfer_to_main_physics_space():
+	var global_player_base_trans := car.player_offset.global_transform * base.transform
+	var global_player_body_trans := car.player_offset.global_transform * body.transform
+
+	# Convert players relative-to-car velocity to global velocity
+	base.linear_velocity = car.global_transform.basis * base.linear_velocity + car.linear_velocity
+	body.linear_velocity = car.global_transform.basis * body.linear_velocity + car.linear_velocity
+
 	reparent(level.main_physics_space, false)
-	position += car.player_offset.global_position
+
+	base.global_transform = global_player_base_trans
+	body.global_transform = global_player_body_trans
+
 	car.hide_player_model()
 
 
