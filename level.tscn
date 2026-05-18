@@ -29,12 +29,15 @@ top_radius = 0.1
 bottom_radius = 0.1
 height = 1.0
 
-[node name="Level" type="Node3D" unique_id=448124711 node_paths=PackedStringArray("player", "car", "path_follow")]
+[node name="Level" type="Node3D" unique_id=448124711 node_paths=PackedStringArray("player", "car", "path_follow", "main_physics_space", "alternate_physics_space")]
 script = ExtResource("1_u52ul")
+car_speed = null
+player_acceleration_factor = 0.5
 player = NodePath("CanvasLayer/SubViewportContainer/SubViewport/Player")
 car = NodePath("Car")
 path_follow = NodePath("Path3D/PathFollow3D")
-player_acceleration_factor = 0.5
+main_physics_space = NodePath(".")
+alternate_physics_space = NodePath("CanvasLayer/SubViewportContainer/SubViewport")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1952796701]
 
@@ -80,8 +83,9 @@ handle_input_locally = false
 size = Vector2i(128, 128)
 render_target_update_mode = 4
 
-[node name="Player" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=1111289112 instance=ExtResource("3_0b4ue")]
+[node name="Player" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=1111289112 node_paths=PackedStringArray("car") instance=ExtResource("3_0b4ue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+car = NodePath("../../../../Car")
 
 [node name="Camera3D" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=568599620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3677002, 2.907236)

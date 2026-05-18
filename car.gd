@@ -43,8 +43,10 @@ func _physics_process(delta: float) -> void:
 # Render the player on top of the car according to the local offset and the transforms
 # of the player in the separate physics space
 func update_player_position():
-	player_base_model.transform = player.base_model.global_transform.translated(player_offset.position)
-	player_body_model.transform = player.body_model.global_transform.translated(player_offset.position)
+	#player_base_model.transform = player.base_model.global_transform.translated(player_offset.position)
+	#player_body_model.transform = player.body_model.global_transform.translated(player_offset.position)
+	player_base_model.global_transform = player_offset.global_transform * player.base_model.global_transform
+	player_body_model.global_transform = player_offset.global_transform * player.body_model.global_transform
 
 
 # Pull the Rigidbody towards a point ahead to make it "drive"
@@ -53,3 +55,8 @@ func pull_towards(target_position: Vector3):
 	var force := target_position - pull_offset.global_position
 	force = force.normalized() * force.length_squared()
 	apply_force(force, pull_offset.global_position - global_position)
+
+
+func hide_player_model():
+	player_base_model.hide()
+	player_body_model.hide()

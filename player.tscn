@@ -20,6 +20,9 @@ script = ExtResource("1_4flbx")
 axis_lock_angular_y = true
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_onrkg")
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Base" unique_id=438066627]
 shape = SubResource("BoxShape3D_i3pqv")
@@ -47,3 +50,5 @@ angular_spring_x/damping = 10.0
 angular_spring_z/enabled = true
 angular_spring_z/stiffness = 10.0
 angular_spring_z/damping = 10.0
+
+[connection signal="body_entered" from="Base" to="." method="_on_base_body_entered"]
