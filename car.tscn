@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dasla72x23yms" path="res://car.gd" id="1_7822p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vonw3"]
+size = Vector3(3, 1, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7822p"]
 albedo_color = Color(0.16077456, 0.2827044, 0.5743043, 1)
